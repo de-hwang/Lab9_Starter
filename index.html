@@ -87,6 +87,14 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "bae5dfff9a454e04ac98a6516b7fcd94",
+      application: "cse-110-lab-9"
+    });
+  </script>
+                        
   <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -102,6 +110,119 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    // Log button
+    errorBtns[0].addEventListener("click", function() {
+      const cLog = "Log";
+
+      if (cLog === "Log") {
+        throw new Error("Invalid console log! :(");
+      }
+
+      console.log(cLog);
+    })
+
+    // Error button
+    errorBtns[1].addEventListener("click", function() {
+      console.error("This is an error");
+    })
+
+    // Count button
+    errorBtns[2].addEventListener("click", function() {
+      console.count();
+    })
+
+    // Warn button
+    errorBtns[3].addEventListener("click", function() {
+      console.warn("This is a warning");
+    })
+
+
+    // Assert button
+    errorBtns[4].addEventListener("click", function() {
+      const x = 5;
+      const y = 3;
+      const reason = 'x is expected to be less than y';
+      console.assert(x < y, {x, y, reason});
+    })
+
+    // Clear button
+    errorBtns[5].addEventListener("click", function() {
+      console.clear();
+    })
+
+    // Dir button
+    errorBtns[6].addEventListener("click", function() {
+      console.dir(document.head);
+    })
+
+    // Dirxml button
+    errorBtns[7].addEventListener("click", function() {
+      console.dirxml(document);
+    })
+
+    // Group start button
+    errorBtns[8].addEventListener("click", function() {
+      console.group("Start group");
+    })
+
+    // Group end button
+    errorBtns[9].addEventListener("click", function() {
+      console.groupEnd("Start group");
+    })
+
+    // Table button
+    errorBtns[10].addEventListener("click", function() {    
+      try {
+        const exArray = [
+          {
+            first: Daniel,
+            last: "Hwang",
+          }, 
+          {
+            first: "Haniel",
+            last: "Dwang",
+          },
+          {
+            first: "Aniel",
+            last: "Wang",
+          }
+        ];
+
+        console.table(exArray);
+      } catch (error) {
+        console.error("An error occured while making the table:", error.message);
+      }
+    })
+
+    // Start timer button
+    errorBtns[11].addEventListener("click", function() {
+      console.time("Test timer");
+    })
+
+    // End timer button
+    errorBtns[12].addEventListener("click", function() {
+      console.timeEnd("Test timer");
+    })
+
+    // Trace button
+    errorBtns[13].addEventListener("click", function() {
+      const first = () => { second(); };
+      const second = () => { third(); };
+      const third = () => { fourth(); };
+      const fourth = () => { console.trace(); };
+      first();
+    })
+
+    // Global Error button
+    errorBtns[14].addEventListener("click", function() {
+      window.onerror = function(event, source, lineno, colno, error) {
+        console.log("Global Error: " + event + "\n");
+        console.log("Source: " + source);
+      }
+
+      eval("Hello!");
+    })
   </script>
 </body>
 
